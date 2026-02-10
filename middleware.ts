@@ -14,7 +14,8 @@ export default authMiddleware({
       }
 
       // Check if user has completed onboarding
-      const onboardingCompleted = auth.sessionClaims?.unsafeMetadata?.onboardingCompleted
+      const unsafeMetadata = auth.sessionClaims?.unsafeMetadata as { onboardingCompleted?: boolean } | undefined
+      const onboardingCompleted = unsafeMetadata?.onboardingCompleted
 
       // Redirect to onboarding if not completed
       if (!onboardingCompleted && !path.startsWith('/onboarding')) {
