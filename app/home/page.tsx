@@ -3,22 +3,56 @@
 import { Container } from '@/components/ui/Container'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
+import { useUser } from '@clerk/nextjs'
+import { Sparkles } from 'lucide-react'
+
+const skinTypeEmojis: Record<string, string> = {
+  oily: '💧',
+  dry: '🏜️',
+  combination: '🎭',
+  normal: '😊',
+}
+
+const skinConcernLabels: Record<string, string> = {
+  acne: 'Acne & Breakouts',
+  aging: 'Anti-Aging',
+  dryness: 'Hydration',
+  sensitivity: 'Sensitivity',
+  hyperpigmentation: 'Brightening',
+  pores: 'Pore Care',
+}
 
 export default function HomePage() {
+  const { user } = useUser()
+  const skinProfile = user?.unsafeMetadata?.skinProfile as Record<string, string> | undefined
+
+  const skinType = skinProfile?.skinType || 'normal'
+  const skinConcern = skinProfile?.skinConcern
+  const skinGoal = skinProfile?.skinGoal
+
   return (
     <main className="min-h-screen pt-24 pb-12 bg-background-gray">
       <Container>
-        <div className="mb-8 text-center">
-          <h1 className="text-h1-mobile md:text-h1 text-text-primary mb-4">
-            Your Skincare Dashboard
-          </h1>
-          <p className="text-body-mobile md:text-body text-text-secondary mb-6">
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-4">
+            <h1 className="text-h1-mobile md:text-h1 text-text-primary">
+              Welcome back, {user?.firstName || 'there'}!
+            </h1>
+            <Sparkles className="w-8 h-8 text-primary" />
+          </div>
+          <p className="text-body-mobile md:text-body text-text-secondary mb-4">
             Track your skin journey and discover personalized product recommendations
           </p>
-          <p className="text-sm text-text-secondary">
-            (Authentication coming soon - for now, explore our{' '}
-            <a href="/" className="text-primary hover:underline">landing page</a>)
-          </p>
+
+          {skinProfile && (
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
+              <span className="text-2xl">{skinTypeEmojis[skinType]}</span>
+              <span className="text-sm font-medium text-text-primary">
+                {skinType.charAt(0).toUpperCase() + skinType.slice(1)} Skin
+                {skinConcern && ` • ${skinConcernLabels[skinConcern]}`}
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
