@@ -14,6 +14,7 @@ export default function SignUpPage() {
         </div>
         <div className="flex justify-center">
           <SignUp
+            afterSignUpUrl="/home"
             appearance={{
               elements: {
                 formButtonPrimary:
