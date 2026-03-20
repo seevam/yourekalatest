@@ -51,16 +51,16 @@ const features = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen pt-24 pb-12 bg-background-gray">
+    <main className="min-h-screen pt-24 pb-12 bg-gray-950">
       <Container>
         <div className="mb-10 text-center">
-          <h1 className="text-h1-mobile md:text-h1 text-text-primary mb-4">
+          <h1 className="text-h1-mobile md:text-h1 text-white mb-4">
             Your Skincare Dashboard
           </h1>
-          <p className="text-body-mobile md:text-body text-text-secondary mb-6">
+          <p className="text-body-mobile md:text-body text-white/60 mb-6">
             Track your skin journey and discover personalized product recommendations
           </p>
-          <p className="text-sm text-text-secondary">
+          <p className="text-sm text-white/40">
             (Authentication coming soon - for now, explore our{' '}
             <a href="/" className="text-primary hover:underline">landing page</a>)
           </p>
@@ -68,13 +68,20 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map(({ icon: Icon, title, description, color, bg }) => (
-            <Card key={title} hover>
-              <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl ${bg} mb-4`}>
-                <Icon size={22} className={color} strokeWidth={1.75} />
+            <div
+              key={title}
+              className="group relative rounded-2xl bg-gray-900 border border-white/10 p-6 overflow-hidden transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
+            >
+              {/* subtle radial glow behind icon */}
+              <div className={`absolute -top-6 -left-6 w-32 h-32 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300 ${bg}`} />
+
+              <div className={`relative inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 mb-5`}>
+                <Icon size={20} className={color} strokeWidth={1.75} />
               </div>
-              <h3 className="text-xl font-semibold text-text-primary mb-2">{title}</h3>
-              <p className="text-text-secondary">{description}</p>
-            </Card>
+
+              <h3 className="relative text-base font-semibold text-white mb-1.5">{title}</h3>
+              <p className="relative text-sm text-white/50 leading-relaxed">{description}</p>
+            </div>
           ))}
         </div>
       </Container>
