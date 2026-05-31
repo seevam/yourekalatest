@@ -14,6 +14,7 @@ export default function SignInPage() {
         </div>
         <div className="flex justify-center">
           <SignIn
+            afterSignInUrl="/home"
             appearance={{
               elements: {
                 formButtonPrimary:
