@@ -53,6 +53,9 @@ export const Header: React.FC = () => {
                 <Link href="/matches" className="text-text-secondary hover:text-primary transition-colors text-sm font-medium">
                   My Matches
                 </Link>
+                <Link href="/tips" className="text-text-secondary hover:text-primary transition-colors text-sm">
+                  Tips
+                </Link>
                 <Link href="/onboarding" className="text-text-secondary hover:text-primary transition-colors text-sm">
                   My Profile
                 </Link>

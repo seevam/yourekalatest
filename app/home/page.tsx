@@ -35,7 +35,7 @@ const features = [
     description: 'Monitor your skin health improvements over time',
     color: 'text-emerald-500',
     bg: 'bg-emerald-500',
-    href: '#',
+    href: '/progress',
   },
   {
     icon: Lightbulb,
@@ -43,7 +43,7 @@ const features = [
     description: 'Get personalized advice for glowing skin',
     color: 'text-amber-500',
     bg: 'bg-amber-500',
-    href: '#',
+    href: '/tips',
   },
   {
     icon: Settings,
@@ -51,7 +51,7 @@ const features = [
     description: 'Customize your experience and preferences',
     color: 'text-slate-400',
     bg: 'bg-slate-500',
-    href: '#',
+    href: '/settings',
   },
 ]
 
