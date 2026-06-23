@@ -56,8 +56,8 @@ export const Header: React.FC = () => {
                 <Link href="/tips" className="text-text-secondary hover:text-primary transition-colors text-sm">
                   Tips
                 </Link>
-                <Link href="/onboarding" className="text-text-secondary hover:text-primary transition-colors text-sm">
-                  My Profile
+                <Link href="/settings" className="text-text-secondary hover:text-primary transition-colors text-sm">
+                  Settings
                 </Link>
               </nav>
               <UserButton afterSignOutUrl="/" />
