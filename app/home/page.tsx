@@ -7,11 +7,11 @@ import { Camera, BarChart2, TrendingUp, ShoppingBag, Lightbulb, Settings, ArrowR
 const features = [
   {
     icon: Camera,
-    title: 'Take Your First Scan',
-    description: 'Start your beauty journey with an AI-powered face scan',
+    title: 'AI Skin Scan',
+    description: 'Analyse your skin with AI — detect type, concerns and get instant tips',
     color: 'text-violet-500',
     bg: 'bg-violet-500',
-    href: '/onboarding',
+    href: '/scan',
   },
   {
     icon: BarChart2,

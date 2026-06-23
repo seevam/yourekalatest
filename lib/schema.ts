@@ -73,6 +73,17 @@ export const productMatches = pgTable('product_matches', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
+// ─── Skin Scans ───────────────────────────────────────────────────────────────
+
+export const skinScans = pgTable('skin_scans', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id')
+    .references(() => users.id, { onDelete: 'cascade' })
+    .notNull(),
+  analysis: jsonb('analysis').notNull(), // structured Claude response
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+})
+
 // ─── Relations ────────────────────────────────────────────────────────────────
 
 export const usersRelations = relations(users, ({ one, many }) => ({
@@ -81,6 +92,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
     references: [skinProfiles.userId],
   }),
   productMatches: many(productMatches),
+  skinScans: many(skinScans),
 }))
 
 export const skinProfilesRelations = relations(skinProfiles, ({ one }) => ({
@@ -113,3 +125,4 @@ export type SkinProfile = typeof skinProfiles.$inferSelect
 export type NewSkinProfile = typeof skinProfiles.$inferInsert
 export type Product = typeof products.$inferSelect
 export type ProductMatch = typeof productMatches.$inferSelect
+export type SkinScan = typeof skinScans.$inferSelect

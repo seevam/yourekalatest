@@ -47,11 +47,14 @@ export const Header: React.FC = () => {
                 <Link href="/home" className="text-text-secondary hover:text-primary transition-colors text-sm">
                   Dashboard
                 </Link>
-                <Link href="/onboarding" className="text-text-secondary hover:text-primary transition-colors text-sm">
-                  My Profile
+                <Link href="/scan" className="text-text-secondary hover:text-primary transition-colors text-sm">
+                  Skin Scan
                 </Link>
                 <Link href="/matches" className="text-text-secondary hover:text-primary transition-colors text-sm font-medium">
                   My Matches
+                </Link>
+                <Link href="/onboarding" className="text-text-secondary hover:text-primary transition-colors text-sm">
+                  My Profile
                 </Link>
               </nav>
               <UserButton afterSignOutUrl="/" />
@@ -95,11 +98,14 @@ export const Header: React.FC = () => {
                   <Link href="/home" className="text-text-secondary hover:text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
                     Dashboard
                   </Link>
-                  <Link href="/onboarding" className="text-text-secondary hover:text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                    My Profile
+                  <Link href="/scan" className="text-text-secondary hover:text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                    Skin Scan
                   </Link>
                   <Link href="/matches" className="text-text-secondary hover:text-primary font-medium transition-colors" onClick={() => setMobileMenuOpen(false)}>
                     My Matches
+                  </Link>
+                  <Link href="/onboarding" className="text-text-secondary hover:text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                    My Profile
                   </Link>
                   <div className="flex items-center pt-2">
                     <UserButton afterSignOutUrl="/" />
