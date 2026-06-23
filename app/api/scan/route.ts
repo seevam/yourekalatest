@@ -1,9 +1,30 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
-import { eq } from 'drizzle-orm'
+import { eq, desc } from 'drizzle-orm'
 import { db } from '@/lib/db'
 import { users, skinScans, skinProfiles } from '@/lib/schema'
+
+export async function GET() {
+  const { userId: clerkUserId } = await auth()
+  if (!clerkUserId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const [user] = await db
+    .select({ id: users.id })
+    .from(users)
+    .where(eq(users.clerkUserId, clerkUserId))
+    .limit(1)
+
+  if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 })
+
+  const scans = await db
+    .select()
+    .from(skinScans)
+    .where(eq(skinScans.userId, user.id))
+    .orderBy(desc(skinScans.createdAt))
+
+  return NextResponse.json(scans)
+}
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 

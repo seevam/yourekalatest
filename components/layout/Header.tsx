@@ -56,6 +56,9 @@ export const Header: React.FC = () => {
                 <Link href="/tips" className="text-text-secondary hover:text-primary transition-colors text-sm">
                   Tips
                 </Link>
+                <Link href="/progress" className="text-text-secondary hover:text-primary transition-colors text-sm">
+                  Progress
+                </Link>
                 <Link href="/settings" className="text-text-secondary hover:text-primary transition-colors text-sm">
                   Settings
                 </Link>
